@@ -293,6 +293,9 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     stateManager.reset(withNumberOfCards: numberOfCards)
     reloadVisibleCards()
     isAnimating = false
+      if let topCardIndex {
+          delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+      }
   }
 
   /// Returns the `SwipeCard` at the specified index.
