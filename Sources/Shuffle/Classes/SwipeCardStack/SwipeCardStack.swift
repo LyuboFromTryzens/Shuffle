@@ -133,7 +133,16 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
   }
 
   func scaleFactor(forCardAtPosition position: Int) -> CGPoint {
-    return position == 0 ? CGPoint(x: 1, y: 1) : CGPoint(x: 0.95, y: 0.95)
+      switch position {
+      case 0:
+          return CGPoint(x: 1, y: 1)
+      case 1:
+          return CGPoint(x: 0.95, y: 0.95)
+      case 2:
+          return CGPoint(x: 0.90, y: 0.90)
+      default:
+          return .zero
+      }
   }
 
   func transform(forCardAtPosition position: Int) -> CGAffineTransform {

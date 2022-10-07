@@ -132,17 +132,17 @@ class CardStackAnimator: CardStackAnimatable {
       return
     }
 
-//    Animator.animateKeyFrames(
-//      withDuration: duration,
-//      delay: delay,
-//      animations: {
-//        for (position, value) in cardStack.visibleCards.enumerated() {
-//          Animator.addKeyFrame {
-//            cardStack.layoutCard(value.card, at: position)
-//          }
-//        }
-//      },
-//      completion: completion)
+    Animator.animateKeyFrames(
+      withDuration: duration,
+      delay: delay,
+      animations: {
+        for (position, value) in cardStack.visibleCards.enumerated() {
+          Animator.addKeyFrame {
+            cardStack.layoutCard(value.card, at: position)
+          }
+        }
+      },
+      completion: completion)
   }
 
   func animateUndo(_ cardStack: SwipeCardStack,
