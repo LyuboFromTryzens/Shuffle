@@ -63,7 +63,7 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     return visibleCards.first?.index
   }
 
-  var numberOfVisibleCards: Int = 2
+  public var numberOfVisibleCards: Int = 2
 
   /// An ordered array containing all pairs of currently visible cards.
   ///
@@ -307,6 +307,9 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     let numberOfCards = min(stateManager.remainingIndices.count, numberOfVisibleCards)
     for position in 0..<numberOfCards {
       let index = stateManager.remainingIndices[position]
+        if position == 0 {
+            delegate?.cardStack?(self, didSetTheTopCardAt: index)
+        }
       if let card = loadCard(at: index) {
         insertCard(Card(index: index, card: card), at: position)
       }

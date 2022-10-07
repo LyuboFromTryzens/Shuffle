@@ -25,6 +25,9 @@
 import UIKit
 
 @objc public protocol SwipeCardStackDelegate: AnyObject {
+    
+  @objc
+  optional func cardStack(_ cardStack: SwipeCardStack, didSetTheTopCardAt index: Int)
 
   @objc
   optional func cardStack(_ cardStack: SwipeCardStack, didSelectCardAt index: Int)
