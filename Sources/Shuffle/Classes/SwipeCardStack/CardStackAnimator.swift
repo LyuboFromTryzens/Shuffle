@@ -138,7 +138,7 @@ class CardStackAnimator: CardStackAnimatable {
       animations: {
         for (position, value) in cardStack.visibleCards.enumerated() {
           Animator.addKeyFrame {
-            cardStack.layoutCard(value.card, at: position, shouldReset: false)
+            cardStack.layoutCard(value.card, at: position)
           }
         }
       },
