@@ -120,6 +120,10 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     let height = bounds.height - (cardStackInsets.top + cardStackInsets.bottom)
     cardContainer.frame = CGRect(x: cardStackInsets.left, y: cardStackInsets.top, width: width, height: height)
 
+      if let topCardIndex {
+          delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+      }
+      
     for (position, value) in visibleCards.enumerated() {
       layoutCard(value.card, at: position)
     }
