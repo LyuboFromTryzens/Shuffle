@@ -138,7 +138,8 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
 
   func transform(forCardAtPosition position: Int) -> CGAffineTransform {
     let cardScaleFactor = scaleFactor(forCardAtPosition: position)
-      return CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y).translatedBy(x: 0, y: CGFloat(position * -20))
+    let offset = CGFloat(position * -10) - 10
+      return CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y).translatedBy(x: 0, y: offset)
   }
 
   func backgroundCardDragTransform(topCard: SwipeCard, currentPosition: Int) -> CGAffineTransform {
