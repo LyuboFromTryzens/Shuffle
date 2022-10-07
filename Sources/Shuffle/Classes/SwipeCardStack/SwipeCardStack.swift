@@ -120,6 +120,10 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     let height = bounds.height - (cardStackInsets.top + cardStackInsets.bottom)
     cardContainer.frame = CGRect(x: cardStackInsets.left, y: cardStackInsets.top, width: width, height: height)
 
+      if let topCardIndex {
+          delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+      }
+      
     for (position, value) in visibleCards.enumerated() {
       layoutCard(value.card, at: position)
     }
@@ -138,8 +142,7 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
 
   func transform(forCardAtPosition position: Int) -> CGAffineTransform {
     let cardScaleFactor = scaleFactor(forCardAtPosition: position)
-    let offset = CGFloat(position * 10)
-      return CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y).translatedBy(x: 0, y: -offset)
+    return CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y)
   }
 
   func backgroundCardDragTransform(topCard: SwipeCard, currentPosition: Int) -> CGAffineTransform {
