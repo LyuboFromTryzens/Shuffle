@@ -90,16 +90,16 @@ class CardStackAnimator: CardStackAnimatable {
       value.card.transform = cardStack.transform(forCardAtPosition: position + distance)
     }
 
-//    // Animate background cards to new positions
-//    Animator.animateKeyFrames(
-//      withDuration: cardStack.animationOptions.shiftDuration,
-//      animations: {
-//        for (position, value) in cardStack.visibleCards.enumerated() {
-//          let transform = cardStack.transform(forCardAtPosition: position)
-//          Animator.addTransformKeyFrame(to: value.card, transform: transform)
-//        }
-//      },
-//      completion: completion)
+    // Animate background cards to new positions
+    Animator.animateKeyFrames(
+      withDuration: cardStack.animationOptions.shiftDuration,
+      animations: {
+        for (position, value) in cardStack.visibleCards.enumerated() {
+          let transform = cardStack.transform(forCardAtPosition: position)
+          Animator.addTransformKeyFrame(to: value.card, transform: transform)
+        }
+      },
+      completion: completion)
   }
 
   func animateSwipe(_ cardStack: SwipeCardStack,
@@ -132,17 +132,17 @@ class CardStackAnimator: CardStackAnimatable {
       return
     }
 
-    Animator.animateKeyFrames(
-      withDuration: duration,
-      delay: delay,
-      animations: {
-        for (position, value) in cardStack.visibleCards.enumerated() {
-          Animator.addKeyFrame {
-            cardStack.layoutCard(value.card, at: position)
-          }
-        }
-      },
-      completion: completion)
+//    Animator.animateKeyFrames(
+//      withDuration: duration,
+//      delay: delay,
+//      animations: {
+//        for (position, value) in cardStack.visibleCards.enumerated() {
+//          Animator.addKeyFrame {
+//            cardStack.layoutCard(value.card, at: position)
+//          }
+//        }
+//      },
+//      completion: completion)
   }
 
   func animateUndo(_ cardStack: SwipeCardStack,
