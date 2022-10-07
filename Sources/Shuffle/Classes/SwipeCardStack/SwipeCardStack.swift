@@ -217,9 +217,15 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
       if let card = loadCard(at: bottomCardIndex) {
         insertCard(Card(index: bottomCardIndex, card: card), at: visibleCards.count)
       }
+      if let topCardIndex {
+        delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+      }
     }
 
     delegate?.cardStack?(self, didSwipeCardAt: swipedIndex, with: direction)
+    if let topCardIndex {
+      delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+    }
 
     if stateManager.remainingIndices.isEmpty {
       delegate?.didSwipeAllCards?(self)
@@ -291,6 +297,9 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     stateManager.reset(withNumberOfCards: numberOfCards)
     reloadVisibleCards()
     isAnimating = false
+    if let topCardIndex {
+      delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+    }
   }
 
   /// Returns the `SwipeCard` at the specified index.
@@ -311,9 +320,6 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
     let numberOfCards = min(stateManager.remainingIndices.count, numberOfVisibleCards)
     for position in 0..<numberOfCards {
       let index = stateManager.remainingIndices[position]
-        if position == 0 {
-            delegate?.cardStack?(self, didSetTheTopCardAt: index)
-        }
       if let card = loadCard(at: index) {
         insertCard(Card(index: index, card: card), at: position)
       }
