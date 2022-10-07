@@ -144,10 +144,25 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
           return .zero
       }
   }
+    
+    func translationFactor(forCardAtPosition position: Int) -> CGPoint {
+        switch position {
+        case 0:
+            return CGPoint(x: 0, y: 0)
+        case 1:
+            return CGPoint(x: 0, y: -16)
+        case 2:
+            return CGPoint(x: 0, y: -32)
+        default:
+            return .zero
+        }
+    }
 
   func transform(forCardAtPosition position: Int) -> CGAffineTransform {
     let cardScaleFactor = scaleFactor(forCardAtPosition: position)
-    return CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y)
+    let translationFactor = translationFactor(forCardAtPosition: position)
+    var translation = CGAffineTransform(scaleX: cardScaleFactor.x, y: cardScaleFactor.y)
+      return translation.translatedBy(x: translationFactor.x, y: translationFactor.y)
   }
 
   func backgroundCardDragTransform(topCard: SwipeCard, currentPosition: Int) -> CGAffineTransform {
