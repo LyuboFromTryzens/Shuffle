@@ -157,12 +157,12 @@ class CardAnimator: CardAnimatable {
                              relativeDuration: relativeOverlayDuration,
                              alpha: 1.0)
 
-//    // Transform
-//    let transform = swipeTransform(card, direction: direction, forced: forced)
-//    Animator.addTransformKeyFrame(to: card,
-//                                  withRelativeStartTime: relativeOverlayDuration,
-//                                  relativeDuration: 1 - relativeOverlayDuration,
-//                                  transform: transform)
+    // Transform
+    let transform = swipeTransform(card, direction: direction, forced: forced)
+    Animator.addTransformKeyFrame(to: card,
+                                  withRelativeStartTime: relativeOverlayDuration,
+                                  relativeDuration: 1 - relativeOverlayDuration,
+                                  transform: transform)
   }
 
   // MARK: - Animation Calculations
