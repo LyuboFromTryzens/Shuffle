@@ -213,6 +213,9 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
       if let card = loadCard(at: bottomCardIndex) {
         insertCard(Card(index: bottomCardIndex, card: card), at: visibleCards.count)
       }
+        if let topCardIndex {
+            delegate?.cardStack?(self, didSetTheTopCardAt: topCardIndex)
+        }
     }
 
     delegate?.cardStack?(self, didSwipeCardAt: swipedIndex, with: direction)
