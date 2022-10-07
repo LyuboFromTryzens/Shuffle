@@ -150,9 +150,9 @@ open class SwipeCardStack: UIView, SwipeCardDelegate, UIGestureRecognizerDelegat
         case 0:
             return CGPoint(x: 0, y: 0)
         case 1:
-            return CGPoint(x: 0, y: -16)
+            return CGPoint(x: 0, y: -24)
         case 2:
-            return CGPoint(x: 0, y: -32)
+            return CGPoint(x: 0, y: -48)
         default:
             return .zero
         }
